@@ -1,8 +1,12 @@
 package com.example.noteapp
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.compose.rememberNavController
 import com.example.noteapp.navigation.NavigationGraph
 import com.example.noteapp.ui.theme.ToDoAppTheme
@@ -20,3 +24,5 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+

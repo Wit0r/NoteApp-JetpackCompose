@@ -8,7 +8,7 @@ import com.example.noteapp.domain.model.Note
 @Database(
     entities = [Note::class],
     version = 1,
-    exportSchema = true
+    exportSchema = false
 )
 abstract class NoteDb: RoomDatabase() {
     abstract val noteDao: NoteDao
