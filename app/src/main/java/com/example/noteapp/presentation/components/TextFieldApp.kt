@@ -1,4 +1,4 @@
-package com.example.noteapp.presentation.home.components
+package com.example.noteapp.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions

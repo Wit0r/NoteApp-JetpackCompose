@@ -15,10 +15,9 @@ import com.example.noteapp.domain.model.Note
 import com.example.noteapp.domain.repository.Notes
 
 @Composable
-fun NotesContent(
+fun HomeContent(
     padding: PaddingValues,
     notes: Notes,
-    deleteNote: (note: Note) -> Unit,
     navigateToUpdateNoteScreen: (noteId: Int) -> Unit
 ) {
     val context = LocalContext.current
@@ -33,9 +32,8 @@ fun NotesContent(
     ) {
 
         items(notes) { note ->
-            TaskCard(
+            HomeCard(
                 note = note,
-                deleteNote = { deleteNote(note) },
                 navigateToUpdateNoteScreen = navigateToUpdateNoteScreen
             )
         }

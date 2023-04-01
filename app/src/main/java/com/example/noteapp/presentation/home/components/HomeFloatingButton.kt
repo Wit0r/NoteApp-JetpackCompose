@@ -1,23 +1,25 @@
 package com.example.noteapp.presentation.home.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.noteapp.domain.model.Note
 import com.example.noteapp.presentation.MainViewModel
+import com.example.noteapp.presentation.components.DropdownMenuItemApp
 
 @Composable
-fun FloatingActionButtonApp(
+fun HomeFloatingButton(
     viewModel: MainViewModel = viewModel(),
     openDialog: () -> Unit
 ) {
@@ -26,30 +28,11 @@ fun FloatingActionButtonApp(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         DropdownMenu(
+            modifier = Modifier.background(MaterialTheme.colorScheme.secondary),
             expanded = viewModel.expanded,
             onDismissRequest = { viewModel.expanded = false }
         ) {
-            DropdownMenuItem(
-                text = { Text("Edit") },
-                onClick = { },
-                leadingIcon = {
-                    Icon(
-                        Icons.Outlined.Edit,
-                        contentDescription = null
-                    )
-                }
-            )
-            DropdownMenuItem(
-                text = { Text("Delete") },
-                onClick = {  },
-                leadingIcon = {
-                    Icon(
-                        Icons.Outlined.Edit,
-                        contentDescription = null
-                    )
-                }
-            )
-            DropdownMenuItem(
+            DropdownMenuItemApp(
                 text = { Text("Add") },
                 onClick = openDialog,
                 leadingIcon = {
@@ -59,17 +42,29 @@ fun FloatingActionButtonApp(
                     )
                 }
             )
+            DropdownMenuItemApp(
+                text = { Text("Delete All") },
+                onClick = {
+
+                },
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.Delete,
+                        contentDescription = null
+                    )
+                }
+            )
         }
 
         Spacer(modifier = Modifier.height(4.dp))
 
         FloatingActionButton(
-            onClick = {
-                viewModel.expanded = !viewModel.expanded
-            },
+            onClick = { viewModel.expanded = !viewModel.expanded },
+            containerColor = MaterialTheme.colorScheme.secondary,
+            contentColor = MaterialTheme.colorScheme.onSecondary,
             content = {
                 Icon(
-                    Icons.Default.Edit,
+                    Icons.Default.Add,
                     contentDescription = "Edit icon"
                 )
             }

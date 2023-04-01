@@ -8,10 +8,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.noteapp.core.Constants.HOME_SCREEN
 import com.example.noteapp.core.Constants.NOTE_ID
-import com.example.noteapp.core.Constants.UPDATE_NOTE_SCREEN
+import com.example.noteapp.core.Constants.NOTE_CONTENT_SCREEN
 import com.example.noteapp.presentation.home.HomeScreen
 import com.example.noteapp.presentation.SplashScreen
-import com.example.noteapp.presentation.update_task.UpdateTaskScreen
+import com.example.noteapp.presentation.note_content.NoteContentScreen
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -31,13 +31,13 @@ fun NavigationGraph(navController: NavHostController) {
             HomeScreen(
                 navigateToUpdateNoteScreen = { taskId ->
                     navController.navigate(
-                        route = "${UPDATE_NOTE_SCREEN}/${taskId}"
+                        route = "${NOTE_CONTENT_SCREEN}/${taskId}"
                     )
                 }
             )
         }
         composable(
-            route = "${UPDATE_NOTE_SCREEN}/{$NOTE_ID}",
+            route = "${NOTE_CONTENT_SCREEN}/{$NOTE_ID}",
             arguments = listOf(
                 navArgument(NOTE_ID) {
                     type = NavType.IntType
@@ -45,10 +45,13 @@ fun NavigationGraph(navController: NavHostController) {
             )
         ) { navBackStackEntry ->
             val noteId = navBackStackEntry.arguments?.getInt(NOTE_ID) ?: 0
-            UpdateTaskScreen(
-                taskId = noteId,
+            NoteContentScreen(
+                noteId = noteId,
                 navigateBack = {
                     navController.popBackStack()
+                },
+                navigateToHomeScreen = {
+                    navController.navigate(HOME_SCREEN)
                 }
             )
         }

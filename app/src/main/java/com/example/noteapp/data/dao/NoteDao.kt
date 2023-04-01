@@ -11,17 +11,14 @@ interface NoteDao {
 
     @Query("SELECT * FROM $TABLE_NAME ORDER BY id ASC")
     fun getNotes(): Flow<Notes>
-
     @Query("SELECT * FROM $TABLE_NAME WHERE id = :id")
     suspend fun getNote(id: Int): Note
-
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addNote(note: Note)
-
     @Update
     suspend fun updateNote(note: Note)
-
     @Delete
     suspend fun deleteNote(note: Note)
-
+    @Query("DELETE FROM $TABLE_NAME WHERE id = :id")
+    suspend fun deleteNoteById(id: Int)
 }

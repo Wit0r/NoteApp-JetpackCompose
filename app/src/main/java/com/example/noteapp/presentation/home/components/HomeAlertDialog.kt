@@ -15,9 +15,10 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.noteapp.domain.model.Note
+import com.example.noteapp.presentation.components.TextFieldApp
 
 @Composable
-fun AddNoteAlertDialog(
+fun HomeAlertDialog(
     openDialog: Boolean,
     closeDialog: () -> Unit,
     addNote: (note: Note) -> Unit

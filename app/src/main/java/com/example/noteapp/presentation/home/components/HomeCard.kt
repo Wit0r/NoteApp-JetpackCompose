@@ -16,15 +16,10 @@ import com.example.noteapp.ui.theme.AppFont
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-fun TaskCard(
+fun HomeCard(
     note: Note,
-    deleteNote: () -> Unit,
     navigateToUpdateNoteScreen: (noteId: Int) -> Unit
 ) {
-
-    var pointer by remember { mutableStateOf(false) }
-    val context = LocalContext.current
-
     ElevatedCard(
         modifier = Modifier
             .aspectRatio(1.0f)

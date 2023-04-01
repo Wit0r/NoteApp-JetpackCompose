@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import com.example.noteapp.ui.theme.AppFont
 
 @Composable
-fun TopBar(title: String = "To do") {
+fun HomeTopBar(title: String = "To do") {
     CenterAlignedTopAppBar(
         title = {
             Text(

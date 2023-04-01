@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.noteapp.domain.model.Note
 import com.example.noteapp.domain.repository.NoteRepository
+import com.example.noteapp.domain.repository.Notes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,12 +24,10 @@ class MainViewModel @Inject constructor(private val repository: NoteRepository):
     val notes = repository.getNotes()
 
     fun getNote(id: Int) = viewModelScope.launch { note = repository.getNote(id) }
-
     fun addNote(note: Note) = viewModelScope.launch { repository.addNote(note) }
-
     fun updateNote(note: Note) = viewModelScope.launch { repository.updateNote(note) }
-
     fun deleteNote(note: Note) = viewModelScope.launch { repository.deleteNote(note) }
+    fun deleteById(id: Int) = viewModelScope.launch { repository.deleteById(id) }
     fun updateTitle(title: String) {
         note = note.copy(title = title)
     }
@@ -40,7 +39,7 @@ class MainViewModel @Inject constructor(private val repository: NoteRepository):
         openDialog = true
     }
 
-    fun closeDialgo() {
+    fun closeDialog() {
         openDialog = false
     }
 

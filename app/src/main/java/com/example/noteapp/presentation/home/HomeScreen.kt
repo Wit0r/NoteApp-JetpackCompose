@@ -6,10 +6,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.noteapp.presentation.MainViewModel
-import com.example.noteapp.presentation.home.components.AddNoteAlertDialog
-import com.example.noteapp.presentation.home.components.FloatingActionButtonApp
-import com.example.noteapp.presentation.home.components.NotesContent
-import com.example.noteapp.presentation.home.components.TopBar
+import com.example.noteapp.presentation.home.components.HomeAlertDialog
+import com.example.noteapp.presentation.home.components.HomeContent
+import com.example.noteapp.presentation.home.components.HomeFloatingButton
+import com.example.noteapp.presentation.home.components.HomeTopBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -21,19 +21,22 @@ fun HomeScreen(
     val notes by viewModel.notes.collectAsState(initial = emptyList())
 
     Scaffold(
-        topBar = { TopBar() },
-        floatingActionButton = { FloatingActionButtonApp(openDialog = { viewModel.openDialog() } ) },
+        topBar = { HomeTopBar() },
+        floatingActionButton = {
+            HomeFloatingButton(
+                openDialog = { viewModel.openDialog() },
+            )
+        },
         floatingActionButtonPosition = FabPosition.End,
         content = { paddingValues ->
-            NotesContent(
+            HomeContent(
                 padding = paddingValues,
                 notes = notes,
-                deleteNote = { note -> viewModel.deleteNote(note) },
                 navigateToUpdateNoteScreen = navigateToUpdateNoteScreen
             )
-            AddNoteAlertDialog(
+            HomeAlertDialog(
                 openDialog = viewModel.openDialog,
-                closeDialog = { viewModel.closeDialgo() },
+                closeDialog = { viewModel.closeDialog() },
                 addNote = { task -> viewModel.addNote(task) }
             )
         },
