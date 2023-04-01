@@ -1,21 +1,22 @@
-package com.example.noteapp.presentation.note_content.components
+package com.example.noteapp.presentation.update_note.components
 
+import androidx.compose.foundation.background
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.noteapp.R
-import com.example.noteapp.presentation.NoteViewModel
+import com.example.noteapp.presentation.components.DropdownMenuItemApp
 import com.example.noteapp.presentation.components.TopBarApp
 
 @Composable
-fun NoteContentTopBar(
-    navigateBack: () -> Unit,
-    viewModel: NoteViewModel = hiltViewModel()
+fun UpdateTopBar(
+    navigateBack: () -> Unit
 ) {
     TopBarApp(
         navigationIcon = {
@@ -26,23 +27,10 @@ fun NoteContentTopBar(
                 )
             }
         },
-        actions = {
-            IconButton(onClick = {  } ) {
-                Icon(
-                    Icons.Default.Edit,
-                    contentDescription = "Edit Note"
-                )
-            }
-
-            IconButton(onClick = { viewModel.openDialog() } ) {
-                Icon(
-                    Icons.Default.Delete,
-                    contentDescription = "Delete Note"
-                )
-            }
-        },
         title = {
-
+            Text(
+                text = "Update"
+            )
         }
     )
 }

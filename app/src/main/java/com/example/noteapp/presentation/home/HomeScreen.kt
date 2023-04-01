@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.noteapp.presentation.MainViewModel
+import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.home.components.HomeAlertDialog
 import com.example.noteapp.presentation.home.components.HomeContent
 import com.example.noteapp.presentation.home.components.HomeFloatingButton
@@ -14,8 +14,8 @@ import com.example.noteapp.presentation.home.components.HomeTopBar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    viewModel: MainViewModel = hiltViewModel(),
-    navigateToUpdateNoteScreen: (noteId: Int) -> Unit
+    viewModel: NoteViewModel = hiltViewModel(),
+    navigateToContentScreen: (noteId: Int) -> Unit
 ) {
 
     val notes by viewModel.notes.collectAsState(initial = emptyList())
@@ -32,7 +32,7 @@ fun HomeScreen(
             HomeContent(
                 padding = paddingValues,
                 notes = notes,
-                navigateToUpdateNoteScreen = navigateToUpdateNoteScreen
+                navigateToContentScreen = navigateToContentScreen
             )
             HomeAlertDialog(
                 openDialog = viewModel.openDialog,

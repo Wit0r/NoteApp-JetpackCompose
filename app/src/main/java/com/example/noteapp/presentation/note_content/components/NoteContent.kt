@@ -16,11 +16,7 @@ import com.example.noteapp.ui.theme.AppFont
 @Composable
 fun NoteContent(
     padding: PaddingValues,
-    note: Note,
-    updateTitle: (title: String) -> Unit,
-    updateContent: (content: String) -> Unit,
-    updateNote: (note: Note) -> Unit,
-    navigateBack: () -> Unit
+    note: Note
 ) {
     Column(
         modifier = Modifier

@@ -6,7 +6,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -18,7 +17,7 @@ import com.example.noteapp.ui.theme.AppFont
 @Composable
 fun HomeCard(
     note: Note,
-    navigateToUpdateNoteScreen: (noteId: Int) -> Unit
+    navigateToContentScreen: (noteId: Int) -> Unit
 ) {
     ElevatedCard(
         modifier = Modifier
@@ -30,7 +29,7 @@ fun HomeCard(
                 bottom = 14.dp
             ),
         onClick = {
-            navigateToUpdateNoteScreen(note.id)
+            navigateToContentScreen(note.id)
         }
     ) {
         Column(

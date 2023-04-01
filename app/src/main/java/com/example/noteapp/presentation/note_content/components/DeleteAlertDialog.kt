@@ -6,17 +6,14 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.noteapp.domain.model.Note
-import com.example.noteapp.domain.repository.Notes
-import com.example.noteapp.presentation.MainViewModel
-import kotlinx.coroutines.delay
+import com.example.noteapp.presentation.NoteViewModel
 
 @Composable
 fun DeleteAlertDialog(
     openDialog: Boolean,
     closeDialog: () -> Unit,
     navigateToHomeScreen: () -> Unit,
-    viewModel: MainViewModel = hiltViewModel(),
+    viewModel: NoteViewModel = hiltViewModel(),
     noteId: Int
 ) {
     if (openDialog) {

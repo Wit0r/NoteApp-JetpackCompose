@@ -14,13 +14,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.noteapp.domain.model.Note
-import com.example.noteapp.presentation.MainViewModel
+import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.components.DropdownMenuItemApp
 
 @Composable
 fun HomeFloatingButton(
-    viewModel: MainViewModel = viewModel(),
+    viewModel: NoteViewModel = viewModel(),
     openDialog: () -> Unit
 ) {
     Column(

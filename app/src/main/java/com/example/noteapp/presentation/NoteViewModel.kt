@@ -7,13 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.noteapp.domain.model.Note
 import com.example.noteapp.domain.repository.NoteRepository
-import com.example.noteapp.domain.repository.Notes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val repository: NoteRepository): ViewModel() {
+class NoteViewModel @Inject constructor(private val repository: NoteRepository): ViewModel() {
 
     var expanded by mutableStateOf(false)
     var openDialog by mutableStateOf(false)
