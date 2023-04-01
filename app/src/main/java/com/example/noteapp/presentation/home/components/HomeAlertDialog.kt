@@ -14,6 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.example.noteapp.core.HomeConstants.ADD_NOTE
+import com.example.noteapp.core.HomeConstants.PLACEHOLDER_CONTENT
+import com.example.noteapp.core.HomeConstants.PLACEHOLDER_TITLE
 import com.example.noteapp.domain.model.Note
 import com.example.noteapp.presentation.components.TextFieldApp
 
@@ -30,13 +33,13 @@ fun HomeAlertDialog(
         AlertDialog(
             onDismissRequest = closeDialog,
             title = {
-                Text(text = "Add Note")
+                Text(text = ADD_NOTE)
             },
             text = {
                 Column {
                     TextFieldApp(
                         text = title,
-                        placeholder = "Title",
+                        placeholder = PLACEHOLDER_TITLE,
                         onTextValueChange = { newValue -> title = newValue },
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text,
@@ -48,7 +51,7 @@ fun HomeAlertDialog(
 
                     TextFieldApp(
                         text = content,
-                        placeholder = "Content",
+                        placeholder = PLACEHOLDER_CONTENT,
                         onTextValueChange = { newValue -> content = newValue },
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text,

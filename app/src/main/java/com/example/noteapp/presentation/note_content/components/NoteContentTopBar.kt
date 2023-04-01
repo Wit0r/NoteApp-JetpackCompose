@@ -9,6 +9,9 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.noteapp.R
+import com.example.noteapp.core.NoteConstants.BACK_BUTTON_CD
+import com.example.noteapp.core.NoteConstants.DELETE_NOTE_CD
+import com.example.noteapp.core.NoteConstants.EDIT_NOTE_CD
 import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.components.TopBarApp
 
@@ -22,7 +25,7 @@ fun NoteContentTopBar(
             IconButton(onClick = navigateBack) {
                 Icon(
                     arrow_back_icon,
-                    contentDescription = "Back to home screen"
+                    contentDescription = BACK_BUTTON_CD
                 )
             }
         },
@@ -30,14 +33,14 @@ fun NoteContentTopBar(
             IconButton(onClick = {  } ) {
                 Icon(
                     Icons.Default.Edit,
-                    contentDescription = "Edit Note"
+                    contentDescription = EDIT_NOTE_CD
                 )
             }
 
             IconButton(onClick = { viewModel.openDialog() } ) {
                 Icon(
                     Icons.Default.Delete,
-                    contentDescription = "Delete Note"
+                    contentDescription = DELETE_NOTE_CD
                 )
             }
         },

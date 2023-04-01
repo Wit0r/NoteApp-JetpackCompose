@@ -26,15 +26,6 @@ fun NoteContent(
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Top
     ) {
-      /*  Text(
-            text = "Note",
-            fontFamily = AppFont.great_sailor,
-            fontSize = MaterialTheme.typography.labelSmall.fontSize,
-            color = MaterialTheme.colorScheme.secondary
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-*/
         Text(
             text = "${note.title} ${note.id}",
             fontFamily = AppFont.great_sailor,

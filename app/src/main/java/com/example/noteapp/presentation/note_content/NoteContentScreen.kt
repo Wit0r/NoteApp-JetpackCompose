@@ -44,8 +44,7 @@ fun NoteContentScreen(
             DeleteAlertDialog(
                 openDialog = viewModel.openDialog,
                 closeDialog = { viewModel.closeDialog() },
-                noteId = noteId,
-                navigateToHomeScreen = navigateToHomeScreen
+                noteId = noteId
             )
 
         },

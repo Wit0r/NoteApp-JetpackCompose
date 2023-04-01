@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.noteapp.core.HomeConstants.APP_NAME
 import com.example.noteapp.ui.theme.AppFont
 import kotlinx.coroutines.delay
 
@@ -49,7 +50,7 @@ fun SplashScreen(navigateToHomeScreen: () -> Unit) {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "To do",
+            text = APP_NAME,
             fontFamily = AppFont.great_sailor,
             fontSize = with(LocalDensity.current) {
                 MaterialTheme.typography.titleLarge.fontSize.value * fontScale.value

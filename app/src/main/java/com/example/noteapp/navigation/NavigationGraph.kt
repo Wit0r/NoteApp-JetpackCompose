@@ -14,7 +14,6 @@ import com.example.noteapp.core.Constants.UPDATE_NOTE_SCREEN
 import com.example.noteapp.presentation.home.HomeScreen
 import com.example.noteapp.presentation.SplashScreen
 import com.example.noteapp.presentation.note_content.NoteContentScreen
-import com.example.noteapp.presentation.update_note.UpdateNoteScreen
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -67,25 +66,5 @@ fun NavigationGraph(navController: NavHostController) {
                 }
             )
         }
-
-
-        // Update Note Screen
-        composable(
-            route = "${UPDATE_NOTE_SCREEN}/{$NOTE_ID}",
-            arguments = listOf(
-                navArgument(NOTE_ID) {
-                    type = NavType.IntType
-                }
-            )
-        ) { navBackStackEntry ->
-            val noteId = navBackStackEntry.arguments?.getInt(NOTE_ID) ?: 0
-            UpdateNoteScreen(
-                navigateBack = {
-                    navController.popBackStack()
-                }
-            )
-        }
-
     }
-
 }

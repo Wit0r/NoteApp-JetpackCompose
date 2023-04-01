@@ -14,6 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.noteapp.core.HomeConstants.ADD
+import com.example.noteapp.core.HomeConstants.ADD_NOTE
 import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.components.DropdownMenuItemApp
 
@@ -32,24 +34,12 @@ fun HomeFloatingButton(
             onDismissRequest = { viewModel.expanded = false }
         ) {
             DropdownMenuItemApp(
-                text = { Text("Add") },
+                text = { Text(ADD_NOTE) },
                 onClick = openDialog,
                 leadingIcon = {
                     Icon(
                         Icons.Default.Add,
-                        contentDescription = null
-                    )
-                }
-            )
-            DropdownMenuItemApp(
-                text = { Text("Delete All") },
-                onClick = {
-
-                },
-                leadingIcon = {
-                    Icon(
-                        Icons.Default.Delete,
-                        contentDescription = null
+                        contentDescription = ADD_NOTE
                     )
                 }
             )
@@ -64,7 +54,7 @@ fun HomeFloatingButton(
             content = {
                 Icon(
                     Icons.Default.Add,
-                    contentDescription = "Edit icon"
+                    contentDescription = ADD
                 )
             }
         )

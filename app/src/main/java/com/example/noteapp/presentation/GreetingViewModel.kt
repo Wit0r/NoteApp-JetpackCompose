@@ -52,5 +52,4 @@ class GreetingViewModel @Inject constructor(): ViewModel() {
         return calendar.get(Calendar.HOUR_OF_DAY)
     }
 
-
 }
