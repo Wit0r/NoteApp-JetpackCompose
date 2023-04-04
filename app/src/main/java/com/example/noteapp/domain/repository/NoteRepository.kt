@@ -8,10 +8,15 @@ typealias Notes = List<Note>
 interface NoteRepository {
 
     fun getNotes(): Flow<Notes>
+
     suspend fun getNote(id: Int): Note
+
     suspend fun addNote(note: Note)
+
     suspend fun updateNote(note: Note)
+
     suspend fun deleteNote(note: Note)
+
     suspend fun deleteById(id: Int)
 
 }

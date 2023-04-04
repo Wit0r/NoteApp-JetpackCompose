@@ -1,8 +1,11 @@
 package com.example.noteapp.presentation.home.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -13,7 +16,7 @@ import com.example.noteapp.domain.model.Note
 import com.example.noteapp.ui.theme.AppFont
 
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeCard(
     note: Note,
@@ -22,15 +25,8 @@ fun HomeCard(
     ElevatedCard(
         modifier = Modifier
             .aspectRatio(1.0f)
-            .padding(
-                start = 14.dp,
-                end = 14.dp,
-                top = 14.dp,
-                bottom = 14.dp
-            ),
-        onClick = {
-            navigateToContentScreen(note.id)
-        }
+            .padding(14.dp),
+        onClick = { navigateToContentScreen(note.id) }
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),

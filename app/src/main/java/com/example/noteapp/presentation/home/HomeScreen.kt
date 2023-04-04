@@ -1,17 +1,10 @@
 package com.example.noteapp.presentation.home
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.noteapp.presentation.GreetingViewModel
 import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.home.components.HomeAlertDialog
 import com.example.noteapp.presentation.home.components.HomeContent
@@ -43,7 +36,7 @@ fun HomeScreen(
             HomeAlertDialog(
                 openDialog = viewModel.openDialog,
                 closeDialog = { viewModel.closeDialog() },
-                addNote = { task -> viewModel.addNote(task) }
+                addNote = { note -> viewModel.addNote(note) }
             )
         },
         containerColor = MaterialTheme.colorScheme.background,

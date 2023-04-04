@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
@@ -15,9 +13,12 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.noteapp.core.HomeConstants.ADD_NOTE
+import com.example.noteapp.core.HomeConstants.DISMISS_TEXT
 import com.example.noteapp.core.HomeConstants.PLACEHOLDER_CONTENT
 import com.example.noteapp.core.HomeConstants.PLACEHOLDER_TITLE
+import com.example.noteapp.core.HomeConstants.TITLE_NEW_NOTE
 import com.example.noteapp.domain.model.Note
+import com.example.noteapp.presentation.components.AlertDialogApp
 import com.example.noteapp.presentation.components.TextFieldApp
 
 @Composable
@@ -30,10 +31,10 @@ fun HomeAlertDialog(
         var title by remember { mutableStateOf("") }
         var content by remember { mutableStateOf("") }
 
-        AlertDialog(
+        AlertDialogApp(
             onDismissRequest = closeDialog,
             title = {
-                Text(text = ADD_NOTE)
+                Text(text = TITLE_NEW_NOTE)
             },
             text = {
                 Column {
@@ -73,20 +74,16 @@ fun HomeAlertDialog(
                         addNote(note)
                     }
                 ) {
-                    Text(text = "Add Note")
+                    Text(text = ADD_NOTE)
                 }
             },
             dismissButton = {
                 TextButton(
                     onClick = closeDialog
                 ) {
-                    Text(text = "Cancel")
+                    Text(text = DISMISS_TEXT)
                 }
-            },
-            containerColor = MaterialTheme.colorScheme.background,
-            titleContentColor = MaterialTheme.colorScheme.onBackground,
-            iconContentColor = MaterialTheme.colorScheme.onBackground,
-            textContentColor = MaterialTheme.colorScheme.onBackground
+            }
         )
 
     }

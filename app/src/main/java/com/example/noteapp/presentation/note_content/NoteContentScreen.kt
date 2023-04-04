@@ -5,8 +5,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.note_content.components.DeleteAlertDialog
@@ -26,8 +24,6 @@ fun NoteContentScreen(
         viewModel.getNote(noteId)
     }
 
-    val notes by viewModel.notes.collectAsState(initial = emptyList())
-
     Scaffold(
         topBar = {
             NoteContentTopBar(
@@ -44,7 +40,8 @@ fun NoteContentScreen(
             DeleteAlertDialog(
                 openDialog = viewModel.openDialog,
                 closeDialog = { viewModel.closeDialog() },
-                noteId = noteId
+                noteId = noteId,
+                navigateToHomeScreen = navigateToHomeScreen
             )
 
         },

@@ -5,7 +5,9 @@ object HomeConstants {
     const val APP_NAME = "Note"
 
     // Home Alert Dialog
-    const val ADD_NOTE = "ADD NOTE"
+    const val TITLE_NEW_NOTE = "New Note"
+    const val ADD_NOTE = "Add Note"
+    const val DISMISS_TEXT = "Cancel"
     const val PLACEHOLDER_TITLE = "Title"
     const val PLACEHOLDER_CONTENT = "Content"
 
