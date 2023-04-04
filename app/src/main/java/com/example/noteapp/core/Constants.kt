@@ -22,6 +22,7 @@ object NoteConstants {
     const val DELETE_DIALOG_MESSAGE = "Do you really want to delete?"
     const val YES_TEXT = "Yes"
     const val CANCEL_TEXT = "Cancel"
+    const val TOAST_NOTE_DELETED = "Note deleted successfully!"
 
     // Note Content Top Bar
     const val BACK_BUTTON_CD = "Back to home screen"

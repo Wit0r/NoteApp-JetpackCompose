@@ -1,10 +1,7 @@
 package com.example.noteapp.presentation.note_content
 
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.note_content.components.DeleteAlertDialog
@@ -31,7 +28,6 @@ fun NoteContentScreen(
             )
         },
         content = { padding ->
-
             NoteContent(
                 padding = padding,
                 note = viewModel.note

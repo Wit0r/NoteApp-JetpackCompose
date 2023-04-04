@@ -21,9 +21,6 @@ interface NoteDao {
     @Update
     suspend fun updateNote(note: Note)
 
-    @Delete
-    suspend fun deleteNote(note: Note)
-
     @Query("DELETE FROM $TABLE_NAME WHERE id = :id")
-    suspend fun deleteById(id: Int)
+    suspend fun deleteNote(id: Int)
 }

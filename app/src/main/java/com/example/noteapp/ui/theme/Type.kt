@@ -21,6 +21,7 @@ val Typography = Typography(
 
 object AppFont {
 
+    /*val great_sailor = FontFamily.Default*/
     val great_sailor = FontFamily(Font(R.font.great_sailor))
 
 }

@@ -1,15 +1,20 @@
 package com.example.noteapp.presentation
 
-import androidx.compose.runtime.State
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.noteapp.core.NoteConstants.TOAST_NOTE_DELETED
+import com.example.noteapp.core.NoteStateHolder
 import com.example.noteapp.domain.model.Note
 import com.example.noteapp.domain.model.NoteState
 import com.example.noteapp.domain.repository.NoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,9 +29,11 @@ class NoteViewModel @Inject constructor(private val repository: NoteRepository):
 
     val notes = repository.getNotes()
 
-    private val _noteState = mutableStateOf(NoteState())
-    val state: State<NoteState> = _noteState
+    private val _noteState = NoteStateHolder._noteState
+    val noteState = NoteStateHolder.noteState
 
+    private val _snackBarHostState = mutableStateOf(SnackbarHostState())
+    val snackBarHostState: MutableState<SnackbarHostState> = _snackBarHostState
 
     fun getNote(id: Int) = viewModelScope.launch { note = repository.getNote(id) }
 
@@ -34,13 +41,12 @@ class NoteViewModel @Inject constructor(private val repository: NoteRepository):
 
     fun updateNote(note: Note) = viewModelScope.launch { repository.updateNote(note) }
 
-    fun deleteNote(note: Note) = viewModelScope.launch { repository.deleteNote(note) }
-
     fun deleteById(id: Int) = viewModelScope.launch {
         _noteState.value = NoteState(isLoading = true)
         try {
+            repository.deleteNote(id)
             _noteState.value = NoteState(isDeleted = true)
-            repository.deleteById(id)
+            _snackBarHostState.value.showSnackbar(TOAST_NOTE_DELETED)
         } catch (e: Exception) {
             _noteState.value = NoteState(error = e.message)
         }
