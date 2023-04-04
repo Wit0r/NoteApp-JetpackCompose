@@ -1,17 +1,13 @@
 package com.example.noteapp.presentation.note_content.components
 
-import android.widget.Toast
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.noteapp.core.NoteConstants.CANCEL_TEXT
 import com.example.noteapp.core.NoteConstants.DELETE_DIALOG_MESSAGE
-import com.example.noteapp.core.NoteConstants.TOAST_NOTE_DELETED
 import com.example.noteapp.core.NoteConstants.YES_TEXT
 import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.components.AlertDialogApp
-import kotlinx.coroutines.delay
 
 @Composable
 fun DeleteAlertDialog(
