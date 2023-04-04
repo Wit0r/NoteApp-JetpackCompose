@@ -7,14 +7,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.noteapp.core.NoteConstants.TOAST_NOTE_DELETED
+import com.example.noteapp.core.NoteConstants.SNACK_NOTE_DELETED
 import com.example.noteapp.core.NoteStateHolder
 import com.example.noteapp.domain.model.Note
 import com.example.noteapp.domain.model.NoteState
 import com.example.noteapp.domain.repository.NoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -46,7 +44,7 @@ class NoteViewModel @Inject constructor(private val repository: NoteRepository):
         try {
             repository.deleteNote(id)
             _noteState.value = NoteState(isDeleted = true)
-            _snackBarHostState.value.showSnackbar(TOAST_NOTE_DELETED)
+            _snackBarHostState.value.showSnackbar(SNACK_NOTE_DELETED)
         } catch (e: Exception) {
             _noteState.value = NoteState(error = e.message)
         }
@@ -67,4 +65,7 @@ class NoteViewModel @Inject constructor(private val repository: NoteRepository):
         openDialog = false
     }
 
+    fun resetNoteState() {
+        _noteState.value = NoteState(isDeleted = false, isLoading = false)
+    }
 }

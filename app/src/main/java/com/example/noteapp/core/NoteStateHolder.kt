@@ -1,7 +1,6 @@
 package com.example.noteapp.core
 
 import android.util.Log
-import androidx.compose.material3.SnackbarHostState
 import com.example.noteapp.domain.model.NoteState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,5 +13,6 @@ object NoteStateHolder {
 
     val _noteState = MutableStateFlow(NoteState())
     val noteState: StateFlow<NoteState> = _noteState
+
 
 }

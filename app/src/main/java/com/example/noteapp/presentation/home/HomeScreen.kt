@@ -1,10 +1,9 @@
 package com.example.noteapp.presentation.home
 
-import androidx.compose.animation.core.tween
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.noteapp.core.NoteConstants.TOAST_NOTE_DELETED
+import com.example.noteapp.core.NoteConstants.SNACK_NOTE_DELETED
 import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.home.components.HomeAlertDialog
 import com.example.noteapp.presentation.home.components.HomeContent
@@ -24,22 +23,6 @@ fun HomeScreen(
     val noteState by viewModel.noteState.collectAsState()
     val scope = rememberCoroutineScope()
 
-    LaunchedEffect(noteState.isDeleted) {
-        scope.launch {
-            if (noteState.isDeleted) {
-                snackBarHostState.showSnackbar(TOAST_NOTE_DELETED, duration = SnackbarDuration.Short)
-            }
-        }
-    }
-
-    LaunchedEffect(noteState.isDeleted) {
-        scope.launch {
-            if (noteState.isDeleted) {
-                noteState.isDeleted = false
-            }
-        }
-    }
-
     Scaffold(
         topBar = { HomeTopBar() },
         floatingActionButton = {
@@ -53,8 +36,8 @@ fun HomeScreen(
                 snackbar = { data ->
                     Snackbar(
                         snackbarData = data,
-                        containerColor = MaterialTheme.colorScheme.onPrimary,
-                        contentColor = MaterialTheme.colorScheme.primary
+                        containerColor = MaterialTheme.colorScheme.tertiary,
+                        contentColor = MaterialTheme.colorScheme.onTertiary
                     )
                 }
             )
@@ -75,4 +58,22 @@ fun HomeScreen(
         containerColor = MaterialTheme.colorScheme.background,
         contentColor = MaterialTheme.colorScheme.onBackground
     )
+
+    LaunchedEffect(noteState.isDeleted) {
+        scope.launch {
+            if (noteState.isDeleted) {
+                snackBarHostState.showSnackbar(SNACK_NOTE_DELETED, duration = SnackbarDuration.Short)
+            }
+        }
+    }
+
+    LaunchedEffect(noteState.isDeleted) {
+        scope.launch {
+            if (noteState.isDeleted) {
+                delay(10)
+                viewModel.resetNoteState()
+            }
+        }
+    }
+
 }
