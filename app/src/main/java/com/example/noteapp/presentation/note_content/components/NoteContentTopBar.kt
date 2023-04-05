@@ -13,13 +13,17 @@ import com.example.noteapp.R
 import com.example.noteapp.core.NoteConstants.BACK_BUTTON_CD
 import com.example.noteapp.core.NoteConstants.DELETE_NOTE_CD
 import com.example.noteapp.core.NoteConstants.EDIT_NOTE_CD
+import com.example.noteapp.domain.model.Note
 import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.components.TopBarApp
 
 @Composable
 fun NoteContentTopBar(
+    viewModel: NoteViewModel = hiltViewModel(),
+    note: Note,
     navigateBack: () -> Unit,
-    viewModel: NoteViewModel = hiltViewModel()
+    navigateToUpdateNote: (noteId: Int) -> Unit
+
 ) {
     TopBarApp(
         navigationIcon = {
@@ -31,7 +35,7 @@ fun NoteContentTopBar(
             }
         },
         actions = {
-            IconButton(onClick = {  } ) {
+            IconButton(onClick = { navigateToUpdateNote(note.id) } ) {
                 Icon(
                     Icons.Default.Edit,
                     contentDescription = EDIT_NOTE_CD
