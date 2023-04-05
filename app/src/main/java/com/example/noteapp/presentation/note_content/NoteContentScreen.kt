@@ -14,7 +14,8 @@ fun NoteContentScreen(
     viewModel: NoteViewModel = hiltViewModel(),
     noteId: Int,
     navigateBack: () -> Unit,
-    navigateToHomeScreen: () -> Unit
+    navigateToHomeScreen: () -> Unit,
+    navigateToUpdateNote: (noteId: Int) -> Unit
 ) {
 
     LaunchedEffect(key1 = Unit) {
@@ -24,7 +25,9 @@ fun NoteContentScreen(
     Scaffold(
         topBar = {
             NoteContentTopBar(
-                navigateBack = navigateBack
+                navigateBack = navigateBack,
+                navigateToUpdateNote = navigateToUpdateNote,
+                note = viewModel.note
             )
         },
         content = { padding ->

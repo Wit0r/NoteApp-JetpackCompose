@@ -39,8 +39,8 @@ fun HomeAlertDialog(
             text = {
                 Column {
                     TextFieldApp(
-                        text = title,
-                        placeholder = PLACEHOLDER_TITLE,
+                        value = title,
+                        placeholder = { Text(text = PLACEHOLDER_TITLE) },
                         onTextValueChange = { newValue -> title = newValue },
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text,
@@ -51,8 +51,8 @@ fun HomeAlertDialog(
                     Spacer(modifier = Modifier.height(16.dp))
 
                     TextFieldApp(
-                        text = content,
-                        placeholder = PLACEHOLDER_CONTENT,
+                        value = content,
+                        placeholder = { Text(text = PLACEHOLDER_CONTENT) },
                         onTextValueChange = { newValue -> content = newValue },
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text,

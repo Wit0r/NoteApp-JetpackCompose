@@ -7,8 +7,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.noteapp.domain.model.Note
 import com.example.noteapp.ui.theme.AppFont
 
@@ -27,9 +29,11 @@ fun NoteContent(
     ) {
         Text(
             text = "${note.title} ${note.id}",
-            fontFamily = AppFont.great_sailor,
-            fontSize = MaterialTheme.typography.titleLarge.fontSize,
-            color = MaterialTheme.colorScheme.secondary
+            style = TextStyle(
+                fontFamily = AppFont.great_sailor,
+                fontSize = MaterialTheme.typography.titleLarge.fontSize,
+                color = MaterialTheme.colorScheme.secondary
+            )
         )
 
         Spacer(modifier = Modifier.height(4.dp))
@@ -38,9 +42,13 @@ fun NoteContent(
             item {
                 Text(
                     text = note.content,
-                    fontFamily = AppFont.great_sailor,
-                    textAlign = TextAlign.Start,
-                    fontSize = MaterialTheme.typography.labelLarge.fontSize
+                    style = TextStyle(
+                        fontFamily = AppFont.great_sailor,
+                        textAlign = TextAlign.Start,
+                        fontSize = MaterialTheme.typography.labelLarge.fontSize,
+                        letterSpacing = 0.8.sp,
+                        lineHeight = 24.sp
+                    )
                 )
             }
         }
