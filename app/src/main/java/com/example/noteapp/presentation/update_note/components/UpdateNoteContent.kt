@@ -1,7 +1,6 @@
 package com.example.noteapp.presentation.update_note.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -33,45 +32,38 @@ fun UpdateNoteContent(
         contentAlignment = Alignment.BottomEnd
     ) {
 
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(end = 16.dp),
-            horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.Top
-        ) {
-            TextFieldApp(
-                value = note.title,
-                modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text(text = note.title) },
-                textStyle = TextStyle(
-                    fontFamily = AppFont.great_sailor,
-                    fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                    color = MaterialTheme.colorScheme.secondary
-                ),
-                onTextValueChange = { title -> updateTitle(title) },
-            )
+        TextFieldApp(
+            value = note.title,
+            modifier = Modifier.fillMaxWidth(),
+            placeholder = { Text(text = note.title) },
+            textStyle = TextStyle(
+                fontFamily = AppFont.great_sailor,
+                fontSize = MaterialTheme.typography.titleLarge.fontSize,
+                color = MaterialTheme.colorScheme.secondary
+            ),
+            onTextValueChange = { title -> updateTitle(title) },
+        )
 
-            TextFieldApp(
-                value = note.content,
-                modifier = Modifier.fillMaxSize(),
-                placeholder = { Text(text = note.content) },
-                textStyle = TextStyle(
-                    fontFamily = AppFont.great_sailor,
-                    textAlign = TextAlign.Start,
-                    fontSize = MaterialTheme.typography.labelLarge.fontSize,
-                    letterSpacing = 0.8.sp,
-                    lineHeight = 24.sp
-                ),
-                onTextValueChange = { content -> updateContent(content) },
-            )
+        TextFieldApp(
+            value = note.content,
+            modifier = Modifier.fillMaxSize(),
+            placeholder = { Text(text = note.content) },
+            textStyle = TextStyle(
+                fontFamily = AppFont.great_sailor,
+                textAlign = TextAlign.Start,
+                fontSize = MaterialTheme.typography.labelLarge.fontSize,
+                letterSpacing = 0.8.sp,
+                lineHeight = 24.sp
+            ),
+            onTextValueChange = { content -> updateContent(content) },
+        )
 
-            Spacer(modifier = Modifier.weight(1f))
 
-        }
 
         Button(
-            modifier = Modifier.fillMaxWidth().height(65.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(65.dp),
             onClick = { updateNote(note) }
         ) {
             Text(text = "Edit")
