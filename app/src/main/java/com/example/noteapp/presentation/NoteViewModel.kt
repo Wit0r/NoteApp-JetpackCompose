@@ -7,7 +7,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.noteapp.core.NoteConstants.SNACK_NOTE_DELETED
 import com.example.noteapp.core.NoteStateHolder
 import com.example.noteapp.domain.model.Note
 import com.example.noteapp.domain.model.NoteState
@@ -17,7 +16,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NoteViewModel @Inject constructor(private val repository: NoteRepository): ViewModel() {
+class NoteViewModel @Inject constructor(private val repository: NoteRepository) : ViewModel() {
 
     var expanded by mutableStateOf(false)
     var openDialog by mutableStateOf(false)
@@ -37,22 +36,32 @@ class NoteViewModel @Inject constructor(private val repository: NoteRepository):
 
     fun addNote(note: Note) = viewModelScope.launch { repository.addNote(note) }
 
-    fun updateNote(note: Note) = viewModelScope.launch { repository.updateNote(note) }
+    fun updateNote(note: Note) = viewModelScope.launch {
+        _noteState.emit(NoteState(isLoading = true))
+        try {
+            repository.updateNote(note)
+            _noteState.emit(NoteState(isEdited = true))
+        } catch (e: Exception) {
+            _noteState.emit(NoteState(error = e.message))
+            print(e.message)
+        }
+    }
 
     fun deleteById(id: Int) = viewModelScope.launch {
-        _noteState.value = NoteState(isLoading = true)
+        _noteState.emit(NoteState(isLoading = true))
         try {
             repository.deleteNote(id)
-            _noteState.value = NoteState(isDeleted = true)
-            _snackBarHostState.value.showSnackbar(SNACK_NOTE_DELETED)
+            _noteState.emit(NoteState(isDeleted = true))
         } catch (e: Exception) {
-            _noteState.value = NoteState(error = e.message)
+            _noteState.emit(NoteState(error = e.message))
+            print(e.message)
         }
     }
 
     fun updateTitle(title: String) {
         note = note.copy(title = title)
     }
+
     fun updateContent(content: String) {
         note = note.copy(content = content)
     }
@@ -65,7 +74,9 @@ class NoteViewModel @Inject constructor(private val repository: NoteRepository):
         openDialog = false
     }
 
-    fun resetNoteState() {
-        _noteState.value = NoteState(isDeleted = false, isLoading = false)
+    fun resetNoteState() = viewModelScope.launch {
+        _noteState.emit(NoteState(isDeleted = false, isEdited = false, isLoading = false))
     }
+
+
 }

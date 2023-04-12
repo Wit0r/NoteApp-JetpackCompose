@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- HomeConstants -->
+    <string name="app_name">Note</string>
+    <string name="title_new_note" translatable="true">New Note</string>
+    <string name="add_note" translatable="true">Add Note</string>
+    <string name="dismiss_text" translatable="true">Cancel</string>
+    <string name="placeholder_title" translatable="true">Title</string>
+    <string name="placeholder_content" translatable="true">Content</string>
+    <string name="add" translatable="true">Add</string>
+
+    <!-- NoteConstants -->
+    <string name="delete_dialog_message" translatable="true">Do you really want to delete?</string>
+    <string name="yes_text" translatable="true">Yes</string>
+    <string name="cancel_text" translatable="true">Cancel</string>
+    <string name="snack_note_deleted" translatable="true">Note deleted successfully!</string>
+    <string name="back_button_cd" translatable="true">Back to home screen</string>
+    <string name="edit_note_cd" translatable="true">Edit Note</string>
+    <string name="delete_note_cd" translatable="true">Delete Note</string>
+</resources>

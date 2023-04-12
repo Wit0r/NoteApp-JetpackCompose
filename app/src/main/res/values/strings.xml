@@ -1,6 +1,19 @@
 <resources>
+    <!-- HomeConstants -->
     <string name="app_name">Note</string>
+    <string name="title_new_note" translatable="false">New Note</string>
+    <string name="add_note" translatable="false">Add Note</string>
+    <string name="dismiss_text" translatable="false">Cancel</string>
+    <string name="placeholder_title" translatable="false">Title</string>
+    <string name="placeholder_content" translatable="false">Content</string>
+    <string name="add" translatable="false">Add</string>
 
-    
-
+    <!-- NoteConstants -->
+    <string name="delete_dialog_message" translatable="false">Do you really want to delete?</string>
+    <string name="yes_text" translatable="false">Yes</string>
+    <string name="cancel_text" translatable="false">Cancel</string>
+    <string name="snack_note_deleted" translatable="false">Note deleted successfully!</string>
+    <string name="back_button_cd" translatable="false">Back to home screen</string>
+    <string name="edit_note_cd" translatable="false">Edit Note</string>
+    <string name="delete_note_cd" translatable="false">Delete Note</string>
 </resources>

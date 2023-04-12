@@ -2,7 +2,10 @@ package com.example.noteapp.presentation.home
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.noteapp.core.Constants
+import com.example.noteapp.core.NoteConstants
 import com.example.noteapp.core.NoteConstants.SNACK_NOTE_DELETED
 import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.home.components.HomeAlertDialog
@@ -62,7 +65,7 @@ fun HomeScreen(
     LaunchedEffect(noteState.isDeleted) {
         scope.launch {
             if (noteState.isDeleted) {
-                snackBarHostState.showSnackbar(SNACK_NOTE_DELETED, duration = SnackbarDuration.Short)
+                snackBarHostState.showSnackbar(message = SNACK_NOTE_DELETED, duration = SnackbarDuration.Short)
             }
         }
     }
@@ -70,7 +73,7 @@ fun HomeScreen(
     LaunchedEffect(noteState.isDeleted) {
         scope.launch {
             if (noteState.isDeleted) {
-                delay(10)
+                delay(30)
                 viewModel.resetNoteState()
             }
         }

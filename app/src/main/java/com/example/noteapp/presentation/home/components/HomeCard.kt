@@ -28,14 +28,15 @@ fun HomeCard(
         onClick = { navigateToContentScreen(note.id) }
     ) {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = note.title,
                 fontFamily = AppFont.great_sailor,
-                fontSize = MaterialTheme.typography.titleSmall.fontSize,
+                fontSize = MaterialTheme.typography.titleMedium.fontSize,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center,
