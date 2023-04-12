@@ -11,9 +11,9 @@ import com.example.noteapp.core.Constants.NOTE_CONTENT_SCREEN
 import com.example.noteapp.core.Constants.NOTE_ID
 import com.example.noteapp.core.Constants.SPLASH_SCREEN
 import com.example.noteapp.core.Constants.UPDATE_NOTE_SCREEN
-import com.example.noteapp.presentation.splash.SplashScreen
 import com.example.noteapp.presentation.home.HomeScreen
 import com.example.noteapp.presentation.note_content.NoteContentScreen
+import com.example.noteapp.presentation.splash.SplashScreen
 import com.example.noteapp.presentation.update_note.UpdateNoteScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
