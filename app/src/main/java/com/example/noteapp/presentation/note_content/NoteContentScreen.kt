@@ -35,7 +35,6 @@ fun NoteContentScreen(
                 padding = padding,
                 note = viewModel.note
             )
-
             DeleteAlertDialog(
                 openDialog = viewModel.openDialog,
                 closeDialog = { viewModel.closeDialog() },

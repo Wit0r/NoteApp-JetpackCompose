@@ -1,4 +1,4 @@
-package com.example.noteapp.presentation
+package com.example.noteapp.presentation.splash
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.noteapp.core.HomeConstants.APP_NAME
@@ -50,7 +51,7 @@ fun SplashScreen(navigateToHomeScreen: () -> Unit) {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = APP_NAME,
+            text = stringResource(APP_NAME),
             fontFamily = AppFont.great_sailor,
             fontSize = with(LocalDensity.current) {
                 MaterialTheme.typography.titleLarge.fontSize.value * fontScale.value
@@ -60,4 +61,3 @@ fun SplashScreen(navigateToHomeScreen: () -> Unit) {
         )
     }
 }
-

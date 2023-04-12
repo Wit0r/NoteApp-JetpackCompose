@@ -8,6 +8,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.noteapp.R
 import com.example.noteapp.core.NoteConstants.BACK_BUTTON_CD
@@ -16,6 +17,7 @@ import com.example.noteapp.core.NoteConstants.EDIT_NOTE_CD
 import com.example.noteapp.domain.model.Note
 import com.example.noteapp.presentation.NoteViewModel
 import com.example.noteapp.presentation.components.TopBarApp
+import com.example.noteapp.presentation.components.TopBarStyle
 
 @Composable
 fun NoteContentTopBar(
@@ -26,11 +28,12 @@ fun NoteContentTopBar(
 
 ) {
     TopBarApp(
+        topBarStyle = TopBarStyle.CENTER,
         navigationIcon = {
             IconButton(onClick = navigateBack) {
                 Icon(
                     arrow_back_icon,
-                    contentDescription = BACK_BUTTON_CD
+                    contentDescription = stringResource(BACK_BUTTON_CD)
                 )
             }
         },
@@ -38,14 +41,14 @@ fun NoteContentTopBar(
             IconButton(onClick = { navigateToUpdateNote(note.id) } ) {
                 Icon(
                     Icons.Default.Edit,
-                    contentDescription = EDIT_NOTE_CD
+                    contentDescription = stringResource(EDIT_NOTE_CD)
                 )
             }
 
             IconButton(onClick = { viewModel.openDialog() } ) {
                 Icon(
                     Icons.Default.Delete,
-                    contentDescription = DELETE_NOTE_CD
+                    contentDescription = stringResource(DELETE_NOTE_CD)
                 )
             }
         },

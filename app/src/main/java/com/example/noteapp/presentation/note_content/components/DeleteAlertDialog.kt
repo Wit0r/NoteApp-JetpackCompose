@@ -1,7 +1,12 @@
 package com.example.noteapp.presentation.note_content.components
 
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.noteapp.core.NoteConstants.CANCEL_TEXT
 import com.example.noteapp.core.NoteConstants.DELETE_DIALOG_MESSAGE
@@ -25,7 +30,7 @@ fun DeleteAlertDialog(
             onDismissRequest = closeDialog,
             title = {
                 Text(
-                    text = DELETE_DIALOG_MESSAGE
+                    text = stringResource(DELETE_DIALOG_MESSAGE)
                 )
             },
             confirmButton = {
@@ -34,21 +39,23 @@ fun DeleteAlertDialog(
                         viewModel.deleteById(noteId)
                     }
                 ) {
-                    Text(text = YES_TEXT)
+                    Text(text = stringResource(YES_TEXT))
                 }
             },
             dismissButton = {
                 TextButton(
                     onClick = closeDialog
                 ) {
-                    Text(text = CANCEL_TEXT)
+                    Text(text = stringResource(CANCEL_TEXT))
                 }
             }
         )
 
-        if (noteState.isDeleted) {
-            closeDialog()
-            navigateToHomeScreen()
+        LaunchedEffect(noteState.isDeleted) {
+            if (noteState.isDeleted) {
+                closeDialog()
+                navigateToHomeScreen()
+            }
         }
 
     }

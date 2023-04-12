@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- HomeConstants -->
+    <string name="app_name">Note</string>
+    <string name="title_new_note" translatable="true">Nova Nota</string>
+    <string name="add_note" translatable="true">Adicionar Nota</string>
+    <string name="dismiss_text" translatable="true">Cancelar</string>
+    <string name="placeholder_title" translatable="true">Titulo</string>
+    <string name="placeholder_content" translatable="true">Conteúdo</string>
+    <string name="add" translatable="true">Adicionar</string>
+
+    <!-- NoteConstants -->
+    <string name="delete_dialog_message" translatable="true">Tem certeza que deseja excluir?</string>
+    <string name="yes_text" translatable="true">Sim</string>
+    <string name="cancel_text" translatable="true">Cancelar</string>
+    <string name="snack_note_deleted" translatable="true">Nota excluída com sucesso!</string>
+    <string name="back_button_cd" translatable="true">Voltar à tela inicial</string>
+    <string name="edit_note_cd" translatable="true">Editar Nota</string>
+    <string name="delete_note_cd" translatable="true">Excluir Nota</string>
+</resources>

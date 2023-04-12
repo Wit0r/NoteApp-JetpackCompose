@@ -2,8 +2,6 @@
 
 package com.example.noteapp.presentation.update_note
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -27,17 +25,14 @@ fun UpdateNoteScreen(
         topBar = {
             UpdateNoteTopBar(
                 note = viewModel.note,
-                navigateBack = navigateBack
+                navigateBack = navigateBack,
+                updateTitle = { title -> viewModel.updateTitle(title)}
             )
-        },
-        bottomBar = {
-
         },
         content = { padding ->
             UpdateNoteContent(
                 padding = padding,
                 note = viewModel.note,
-                updateTitle = { title -> viewModel.updateTitle(title) },
                 updateContent = { content -> viewModel.updateContent(content) },
                 updateNote = { note -> viewModel.updateNote(note) },
                 navigateBack = navigateBack

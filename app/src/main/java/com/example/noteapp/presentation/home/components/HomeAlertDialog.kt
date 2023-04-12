@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -34,13 +35,13 @@ fun HomeAlertDialog(
         AlertDialogApp(
             onDismissRequest = closeDialog,
             title = {
-                Text(text = TITLE_NEW_NOTE)
+                Text(text = stringResource(TITLE_NEW_NOTE))
             },
             text = {
                 Column {
                     TextFieldApp(
                         value = title,
-                        placeholder = { Text(text = PLACEHOLDER_TITLE) },
+                        placeholder = { Text(text = stringResource(PLACEHOLDER_TITLE)) },
                         onTextValueChange = { newValue -> title = newValue },
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text,
@@ -52,7 +53,7 @@ fun HomeAlertDialog(
 
                     TextFieldApp(
                         value = content,
-                        placeholder = { Text(text = PLACEHOLDER_CONTENT) },
+                        placeholder = { Text(text = stringResource(PLACEHOLDER_CONTENT)) },
                         onTextValueChange = { newValue -> content = newValue },
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text,
@@ -74,14 +75,14 @@ fun HomeAlertDialog(
                         addNote(note)
                     }
                 ) {
-                    Text(text = ADD_NOTE)
+                    Text(text = stringResource(ADD_NOTE))
                 }
             },
             dismissButton = {
                 TextButton(
                     onClick = closeDialog
                 ) {
-                    Text(text = DISMISS_TEXT)
+                    Text(text = stringResource(DISMISS_TEXT))
                 }
             }
         )
